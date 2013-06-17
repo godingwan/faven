@@ -22,9 +22,10 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'pry-rails'
 end
 
-group :development do
+group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl_rails'
