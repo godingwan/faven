@@ -1,12 +1,6 @@
 require 'spec_helper'
 
 feature 'user creating an account' do
-  scenario 'user sees a Sign Up option' do
-    visit '/'
-
-    expect(page).to have_content("Sign Up")
-  end
-
   scenario 'user can click on the Sign Up link' do
     visit '/users/sign_up'
 
