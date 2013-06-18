@@ -22,4 +22,8 @@ feature 'user sign in page' do
 
     expect(page).to have_content("Invalid")
   end
+
+  scenario 'must not see a sign in form if already signed in' do
+    pending 'put code here'
+  end
 end
