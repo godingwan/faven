@@ -4,4 +4,9 @@ FactoryGirl.define do
     password "abc123456"
     password_confirmation "abc123456"
   end
+
+  factory :list do
+    user_id 1
+    title 'awesome movie'
+  end
 end
