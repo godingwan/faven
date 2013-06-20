@@ -1,6 +1,8 @@
 BreakableToy2::Application.routes.draw do
   devise_for :users
 
+  resources :lists
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
