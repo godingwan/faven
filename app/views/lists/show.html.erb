@@ -2,3 +2,19 @@
 
 <h4><%= @list.title %></h4>
 
+<ul>
+<%- @list.list_items.each do |item| %>
+  <li><%= item.title %></li>
+<%- end %>
+</ul>
+
+<%= form_for [@list, @item] do |f| %>
+  <div>
+    <%= f.label :title, 'List item' %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.submit 'Add item' %>
+  </div>
+<% end %>

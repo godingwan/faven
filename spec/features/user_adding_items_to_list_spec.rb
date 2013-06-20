@@ -24,5 +24,17 @@ Acceptance Criteria
 
       expect(page).to have_content("item 1")
     end
+
+    pending 'cannot add items to someone elses list' do
+      active_user = FactoryGirl.create(:user)
+
+      other_user = FactoryGirl.create(:user)
+      other_list = FactoryGirl.create(:list, user: other_user)
+
+      sign_in_as(active_user)
+
+      visit list_path(other_list)
+      expect(page).to_not have_button('Add item')
+    end
   end
 end

@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
-  before_filter :authenticate_user!
+                                    # this only authenticates user
+                                    # in the new and create
+  before_filter :authenticate_user! #, only: [:new, :create]
 
   def new
     @list = List.new
@@ -20,5 +22,6 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @item = ListItem.new
   end
 end
