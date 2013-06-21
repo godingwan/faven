@@ -8,13 +8,4 @@
 <%- end %>
 </ul>
 
-<%= form_for [@list, @item] do |f| %>
-  <div>
-    <%= f.label :title, 'List item' %><br />
-    <%= f.text_field :title %>
-  </div>
-
-  <div>
-    <%= f.submit 'Add item' %>
-  </div>
-<% end %>
+<%= render 'list_item_creation' %>

@@ -1,7 +1,9 @@
 class ListsController < ApplicationController
-                                    # this only authenticates user
-                                    # in the new and create
-  before_filter :authenticate_user! #, only: [:new, :create]
+  before_filter :authenticate_user!
+
+  def index
+    @lists = current_user.lists
+  end
 
   def new
     @list = List.new
@@ -13,6 +15,7 @@ class ListsController < ApplicationController
 
     if @list.save
       flash[:notice] = "List created successfully"
+      #TODO: redirect to lists_path
       redirect_to list_path(@list)
     else
       flash[:alert] = "Please provide a Title for your list"

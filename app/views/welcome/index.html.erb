@@ -1,22 +1,10 @@
-<p class="Sign_in_notice">Sign In </p>
-
 <div>
   <% unless user_signed_in? %>
-    <%= form_for("user", :url => user_session_path) do |f| %>
-      <%= f.label :email %> <br/>
-      <%= f.text_field :email , :size=>'15',:maxlength=>'32' %> <br/>
-      <%= f.label :password %> <br/>
-      <%= f.password_field :password , :size=>'15', :maxlength=>'32' %>
-      <br/>
-      <%= f.submit "Sign in" %> <br />
-      <%= link_to "Forgot your password?", new_password_path('user')  %> <br/>
-      <%= link_to "Sign up now", new_user_registration_path %>
-    <% end %>
+    <p class="Sign_in_notice">Sign In </p>
+    <%= render 'sign_in_form' %>
   <% else %>
     <div>
-      <%= link_to "Add a list", new_list_path %>
+      <%= link_to "Go to Lists", lists_path %>
     </div>
   <% end %>
 </div>
-
-

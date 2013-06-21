@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 feature 'user sign in page' do
-  scenario 'user is able to sign in' do
-    FactoryGirl.create(:user)
+  let!(:user) { FactoryGirl.create(:user) }
 
+  scenario 'user is able to sign in' do
     visit '/'
 
     fill_in "Email", :with => "e@mail.com"
@@ -24,6 +24,8 @@ feature 'user sign in page' do
   end
 
   scenario 'must not see a sign in form if already signed in' do
-    pending 'put code here'
+    sign_in_as(user)
+
+    expect(page).to_not have_content("Sign in")
   end
 end
