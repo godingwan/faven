@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe List do
+
+  it { should have_many :list_items }
+
   it 'must provide user_id to be saved' do
     previous_count = List.count
 
