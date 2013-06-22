@@ -6,8 +6,8 @@ feature 'user sign in page' do
   scenario 'user is able to sign in' do
     visit '/'
 
-    fill_in "Email", :with => "e@mail.com"
-    fill_in "Password", :with => "abc123456"
+    fill_in "Email", :with => user.email
+    fill_in "Password", :with => user.password
     click_button "Sign in"
 
     expect(page).to have_content("Signed in")

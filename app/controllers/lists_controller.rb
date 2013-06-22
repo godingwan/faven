@@ -15,7 +15,7 @@ class ListsController < ApplicationController
 
     if @list.save
       flash[:notice] = "List created successfully"
-      redirect_to lists_path
+      redirect_to user_lists_path(:user_id)
     else
       flash[:alert] = "Please provide a Title for your list"
       render action: "new"

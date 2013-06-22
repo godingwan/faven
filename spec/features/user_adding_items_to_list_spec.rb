@@ -4,12 +4,13 @@ feature 'adding items to a list', %q{
 As a user
 I want to be able to add an item to my favorites list
 So that I can change my list
-
-Acceptance Criteria
-* I need to be logged in to add items to my list
-* I must be able to see a field to add the title of the item
-* I must provide a title to save the item to the list
 } do
+
+#   Acceptance Criteria
+# * I need to be logged in to add items to my list
+# * I must be able to see a field to add the title of the item
+# * I must provide a title to save the item to the list
+
   context 'as a user' do
     scenario 'item appears on show page after save' do
       user = FactoryGirl.create(:user)
