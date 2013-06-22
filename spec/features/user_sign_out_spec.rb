@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'user signing out' do
   let(:user) { FactoryGirl.create(:user) }
 
-  scenario 'user must see a sign out link' do
+  scenario 'must see a sign out link' do
     sign_in_as(user)
 
     expect(page).to have_content("Sign out")

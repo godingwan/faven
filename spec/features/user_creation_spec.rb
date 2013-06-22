@@ -29,10 +29,16 @@ feature 'user creating an account' do
   end
 
   scenario 'must not see a sign out button if not signed in' do
-    pending "write test"
+    visit '/'
+
+    expect(page).to_not have_content("Sign out")
   end
 
   scenario 'must see a sign out button if signed in' do
-    pending 'write test'
+    user = FactoryGirl.create(:user)
+
+    sign_in_as(user)
+
+    expect(page).to have_content("Sign out")
   end
 end
