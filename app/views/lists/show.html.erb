@@ -1,10 +1,9 @@
-<h3>List Title</h3>
-
 <h4><%= @list.title %></h4>
 
 <ul>
 <%- @list.list_items.each do |item| %>
   <li><%= item.title %></li>
+  <div><%= button_to 'Delete item', list_list_item_path(@list, item), method: :delete, data: { confirm: "Are you sure?" } %></div>
 <%- end %>
 </ul>
 
