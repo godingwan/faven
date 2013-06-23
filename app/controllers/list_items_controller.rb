@@ -10,4 +10,12 @@ class ListItemsController < ApplicationController
       render 'lists#show'
     end
   end
+
+  def destroy
+    @list = List.find(params[:list_id])
+    @item = ListItem.find(params[:id])
+    @item.destroy
+
+    redirect_to list_path(@list), notice: "Successfully deleted item."
+  end
 end
