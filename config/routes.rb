@@ -6,7 +6,7 @@ BreakableToy2::Application.routes.draw do
   end
 
   resources :lists, only: [:show, :new, :create] do
-    resources :list_items, only: [:create]
+    resources :list_items, only: [:create, :destroy]
   end
 
   # The priority is based upon order of creation:
