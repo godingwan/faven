@@ -5,6 +5,8 @@
 <ul>
   <%- @lists.each do |list| %>
     <li><%= link_to list.title, list_path(list) %></li>
-    <div><%= button_to 'Delete list', list_path(list), method: :delete, data: { confirm: "Are you sure?" } %></div>
+    <%- if current_user == @user %>
+      <div><%= button_to 'Delete list', list_path(list), method: :delete, data: { confirm: "Are you sure?" } %></div>
+    <%- end %>
   <%- end %>
 </ul>
