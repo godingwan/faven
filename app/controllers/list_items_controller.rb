@@ -16,6 +16,6 @@ class ListItemsController < ApplicationController
     @item = ListItem.find(params[:id])
     @item.destroy
 
-    redirect_to list_path(@list), notice: "Successfully deleted item."
+    redirect_to list_path(@list), notice: "Item deleted successfully."
   end
 end

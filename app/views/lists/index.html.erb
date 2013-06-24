@@ -2,10 +2,9 @@
   <%= link_to "Add a list", new_list_path %>
 </div>
 
-<h3>List Title</h3>
-
-<div>
+<ul>
   <%- @lists.each do |list| %>
-    <%= link_to list.title, list_path(list) %>
+    <li><%= link_to list.title, list_path(list) %></li>
+    <div><%= button_to 'Delete list', list_path(list), method: :delete, data: { confirm: "Are you sure?" } %></div>
   <%- end %>
-</div>
+</ul>
