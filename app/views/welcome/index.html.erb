@@ -4,7 +4,7 @@
     <%= render 'sign_in_form' %>
   <% else %>
     <div>
-      <%= link_to "Go to Lists", user_lists_path(:user_id) %>
+      <%= link_to "Go to Lists", user_lists_path(current_user) %>
     </div>
   <% end %>
 </div>

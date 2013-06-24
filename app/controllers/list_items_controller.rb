@@ -5,9 +5,9 @@ class ListItemsController < ApplicationController
     @item.list = @list
 
     if @item.save
-      redirect_to list_path(@list), notice: 'Successfully created new item'
+      redirect_to list_path(@list), notice: 'Successfully created new item.'
     else
-      render 'lists#show'
+      redirect_to list_path(@list), alert: "Item title cannot be blank."
     end
   end
 

@@ -7,4 +7,6 @@
 <%- end %>
 </ul>
 
-<%= render 'list_item_creation' %>
+<%- if current_user == @list_owner %>
+  <%= render 'list_item_creation' %>
+<%- end %>
