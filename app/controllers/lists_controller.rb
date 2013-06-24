@@ -2,8 +2,8 @@ class ListsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    # TODO: Change this to @user = User.find(params[:user_id])
-    @lists = current_user.lists
+    @user = User.find(params[:user_id])
+    @lists = @user.lists
   end
 
   def new
@@ -16,7 +16,7 @@ class ListsController < ApplicationController
 
     if @list.save
       flash[:notice] = "List created successfully"
-      redirect_to user_lists_path(:user_id)
+      redirect_to user_lists_path(current_user)
     else
       flash[:alert] = "Please provide a Title for your list"
       render action: "new"
@@ -26,6 +26,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @item = ListItem.new
+    @list_owner = @list.user
   end
 
   def destroy

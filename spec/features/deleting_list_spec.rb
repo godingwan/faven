@@ -10,8 +10,6 @@ feature 'deleting list', %q{
   # I must see a delete option for a list
   # Upon clicking the delete option, the list must be gone
   # I must not see a delete option on another user's list
-  # I must see a confirmation warning before deleting a list
-  # I must not be able to delete another person's list
 
   context 'when on own list' do
     let(:user) { FactoryGirl.create(:user) }
@@ -33,4 +31,17 @@ feature 'deleting list', %q{
     end
   end
 
+  context 'when on another list' do
+    let(:malicious_user) { FactoryGirl.create(:user) }
+    let(:other_user) { FactoryGirl.create(:user) }
+    let!(:other_user_list) { FactoryGirl.create(:list, user: other_user) }
+
+    scenario 'must not see a delete button' do
+      sign_in_as(malicious_user)
+
+      visit user_lists_path(other_user)
+
+      expect(page).to_not have_button("Delete list")
+    end
+  end
 end

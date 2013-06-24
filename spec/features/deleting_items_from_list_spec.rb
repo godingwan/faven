@@ -16,7 +16,7 @@ So that if I can take it off my list
   context 'when on own list' do
       let(:user) { FactoryGirl.create(:user) }
       let(:list) { FactoryGirl.create(:list, user: user) }
-      let!(:item) { FactoryGirl.create(:list_item, list: list) }
+      let!(:item) { FactoryGirl.create(:list_item, title: "item_to_delete", list: list) }
       before(:each) do
         sign_in_as(user)
 
