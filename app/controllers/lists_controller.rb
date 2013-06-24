@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    # TODO: Change this to @user = User.find(params[:user_id])
     @lists = current_user.lists
   end
 
@@ -25,5 +26,15 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @item = ListItem.new
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    if current_user == @list.user
+      @list.destroy
+      redirect_to user_lists_path(current_user), notice: "List successfully deleted."
+    else
+      redirect_to user_lists_path(current_user), notice: "That is not your list."
+    end
   end
 end

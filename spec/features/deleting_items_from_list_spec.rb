@@ -27,12 +27,6 @@ So that if I can take it off my list
       expect(page).to have_button("Delete item")
     end
 
-    pending 'I must see a warning before it deletes' do
-      click_button "Delete item"
-
-      expect(page).to have_content("Are you sure?")
-    end
-
     scenario 'after I delete an item it should not be there anymore' do
       click_button "Delete item"
 
