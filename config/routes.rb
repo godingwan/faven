@@ -5,7 +5,7 @@ BreakableToy2::Application.routes.draw do
     resources :lists, only: [:index]
   end
 
-  resources :lists, only: [:show, :new, :create, :destroy] do
+  resources :lists, only: [:show, :new, :create, :destroy, :edit, :update] do
     resources :list_items, only: [:create, :destroy]
   end
 
