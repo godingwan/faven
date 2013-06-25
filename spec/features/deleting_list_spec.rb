@@ -21,11 +21,11 @@ feature 'deleting list', %q{
     end
 
     scenario 'I must see a delete button' do
-      expect(page).to have_button("Delete list")
+      expect(page).to have_link("Delete list")
     end
 
     scenario 'I must not see the list after I delete it' do
-      click_button "Delete list"
+      click_link "Delete list"
 
       expect(page).to_not have_content(list.title)
     end
@@ -41,7 +41,7 @@ feature 'deleting list', %q{
 
       visit user_lists_path(other_user)
 
-      expect(page).to_not have_button("Delete list")
+      expect(page).to_not have_link("Delete list")
     end
   end
 end

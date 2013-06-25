@@ -23,6 +23,24 @@ class ListsController < ApplicationController
     end
   end
 
+  def edit
+    @list = List.find(params[:id])
+  end
+
+  def update
+    @list = List.find(params[:id])
+
+    if current_user == @list.user
+      if @list.update_attributes(params[:list])
+        redirect_to user_lists_path(current_user), notice: "List title changed."
+      else
+        redirect_to user_lists_path(current_user), alert: "List title change was unsuccessful."
+      end
+    else
+      redirect_to user_lists_path(current_user), alert: "That is not your list."
+    end
+  end
+
   def show
     @list = List.find(params[:id])
     @item = ListItem.new
