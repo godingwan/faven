@@ -3,7 +3,9 @@
 <ul>
 <%- @list.list_items.each do |item| %>
   <li><%= item.title %></li>
-  <div><%= button_to 'Delete item', list_list_item_path(@list, item), method: :delete, data: { confirm: "Are you sure?" } %></div>
+  <%- if current_user == @list.user %>
+    <div><%= link_to 'Delete item', list_list_item_path(@list, item), method: :delete, data: { confirm: "Are you sure?" } %></div>
+  <%- end %>
 <%- end %>
 </ul>
 
