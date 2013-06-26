@@ -29,7 +29,7 @@ feature 'user creating list' do
     scenario 'must not create the list if a title is not provided' do
       click_button "Create List"
 
-      expect(page).to have_content("Please provide a Title for your list")
+      expect(page).to have_content("Titlecan't be blank")
     end
   end
 

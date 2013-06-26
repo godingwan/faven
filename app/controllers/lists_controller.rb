@@ -15,10 +15,10 @@ class ListsController < ApplicationController
     @list.user = current_user
 
     if @list.save
-      flash[:notice] = "List created successfully"
+      flash[:notice] = "List created successfully."
       redirect_to user_lists_path(current_user)
     else
-      flash[:alert] = "Please provide a Title for your list"
+      flash[:alert] = "Failed to create list."
       render action: "new"
     end
   end
@@ -34,7 +34,7 @@ class ListsController < ApplicationController
       if @list.update_attributes(params[:list])
         redirect_to user_lists_path(current_user), notice: "List title changed."
       else
-        redirect_to user_lists_path(current_user), alert: "List title change was unsuccessful."
+        redirect_to user_lists_path(current_user), alert: "Failed to change list title."
       end
     else
       redirect_to user_lists_path(current_user), alert: "That is not your list."
