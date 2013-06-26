@@ -36,6 +36,7 @@ gem 'haml'
 gem 'compass-rails'
 gem 'devise'
 gem 'carrierwave'
+gem 'simple_form'
 
 
 gem 'jquery-rails'

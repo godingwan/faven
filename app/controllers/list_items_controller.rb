@@ -7,7 +7,7 @@ class ListItemsController < ApplicationController
     if @item.save
       redirect_to list_path(@list), notice: 'Successfully created new item.'
     else
-      redirect_to list_path(@list), alert: "Item title cannot be blank."
+      redirect_to list_path(@list), alert: "Cannot have more than seven items."
     end
   end
 
@@ -22,7 +22,7 @@ class ListItemsController < ApplicationController
       if @item.update_attributes(params[:list_item])
         redirect_to list_path(@item.list_id), notice: "Item updated successfully."
       else
-        redirect_to list_path(@item.list_id), alert: "Item edit was unsuccessful."
+        redirect_to list_path(@item.list_id), alert: "Failed to edit item."
       end
     else
       redirect_to user_lists_path(current_user), alert: "That is not your list."
