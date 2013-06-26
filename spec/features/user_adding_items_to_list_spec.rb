@@ -29,7 +29,7 @@ So that I can change my list
       visit list_path(list)
 
       fill_in "List item", :with => "item 1"
-      click_button "Add item"
+      click_button "Create List item"
 
       expect(page).to have_content("item 1")
     end
@@ -38,7 +38,7 @@ So that I can change my list
       click_link "Go to Lists"
       click_link list.title
       fill_in "List item", :with => "item 1"
-      click_button "Add item"
+      click_button "Create List item"
 
       expect(page).to have_content("item 1")
     end
@@ -46,9 +46,9 @@ So that I can change my list
     scenario 'must see an error if I do not provide an item title' do
       visit list_path(list)
 
-      click_button "Add item"
+      click_button "Create List item"
 
-      expect(page).to have_content("Item title cannot be blank.")
+      expect(page).to have_content("Cannot have more than seven items.")
     end
   end
 

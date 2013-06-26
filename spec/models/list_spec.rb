@@ -23,11 +23,9 @@ describe List do
     expect(List.count).to eql(previous_count)
   end
 
-  it 'must be limited to seven items' do
+  it 'must be limited to seven lists' do
     user = FactoryGirl.create(:user)
-    7.times do
-      FactoryGirl.create(:list, user: user)
-    end
+    FactoryGirl.create_list(:list, 7, user: user)
 
     over_limit_list = FactoryGirl.build(:list, user: user)
 
