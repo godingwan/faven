@@ -9,11 +9,8 @@ feature 'limiting lists' do
       sign_in_as(user)
 
       visit user_lists_path(user)
-      click_link "Add a list"
-      fill_in "Title", :with => "Over the limit"
-      click_button "Create List"
 
-      expect(page).to_not have_content("Over the limit")
+      expect(page).to_not have_link("Add a list")
     end
   end
 
@@ -26,10 +23,8 @@ feature 'limiting lists' do
       sign_in_as(user)
 
       visit list_path(list)
-      fill_in "List item", :with => "Over the limit"
-      click_button "Create List item"
 
-      expect(page).to_not have_content("Over the limit")
+      expect(page).to_not have_button("Create List item")
     end
   end
 end
