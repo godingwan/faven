@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :list do
-    user_id 1
+    user
     sequence(:title) { |n| "list title #{n}"}
   end
 end

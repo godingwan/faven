@@ -1,5 +1,5 @@
 class List < ActiveRecord::Base
-  attr_accessible :title, :user
+  attr_accessible :title
 
   validates_presence_of :user, :title
   validate :cannot_be_over_7, on: :create

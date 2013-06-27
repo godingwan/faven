@@ -27,8 +27,7 @@ describe ListItem do
   end
 
   it 'must be limited to seven items' do
-    user = FactoryGirl.create(:user)
-    list = FactoryGirl.create(:list, user: user)
+    list = FactoryGirl.create(:list)
     FactoryGirl.create_list(:list_item, 7, list: list)
 
     over_limit_item = FactoryGirl.build(:list_item, list: list)

@@ -13,19 +13,18 @@ class ListItemsController < ApplicationController
 
   def edit
     @list = List.find(params[:list_id])
+    unless @list.user == current_user
+      redirect_to user_lists_path(current_user), notice: "That is not your list."
+    end
     @item = ListItem.find(params[:id])
   end
 
   def update
     @item = ListItem.find(params[:id])
-    if current_user == @item.list.user
-      if @item.update_attributes(params[:list_item])
-        redirect_to list_path(@item.list_id), notice: "Item updated successfully."
-      else
-        redirect_to list_path(@item.list_id), alert: "Failed to edit item."
-      end
+    if @item.update_attributes(params[:list_item])
+      redirect_to list_path(@item.list_id), notice: "Item updated successfully."
     else
-      redirect_to user_lists_path(current_user), alert: "That is not your list."
+      redirect_to list_path(@item.list_id), alert: "Failed to edit item."
     end
   end
 
