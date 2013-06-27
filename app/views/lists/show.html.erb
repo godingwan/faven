@@ -1,6 +1,6 @@
 <h4><%= @list.title %></h4>
 
-<ul>
+<ol>
 <%- @list.list_items.each do |item| %>
   <li><%= item.title %></li>
   <%- if current_user == @list.user %>
@@ -8,8 +8,10 @@
     <div><%= link_to 'Delete item', list_list_item_path(@list, item), method: :delete, data: { confirm: "Are you sure?" } %></div>
   <%- end %>
 <%- end %>
-</ul>
+</ol>
 
-<%- if current_user == @list_owner %>
-  <%= render 'list_item_creation' %>
+<%- if @list.list_items.count < 7 %>
+  <%- if current_user == @list_owner %>
+    <%= render 'list_item_creation' %>
+  <%- end %>
 <%- end %>

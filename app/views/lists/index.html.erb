@@ -1,8 +1,10 @@
-<div>
-  <%= link_to "Add a list", new_list_path %>
-</div>
+<%- if current_user.lists.count < 7 %>
+  <div>
+    <%= link_to "Add a list", new_list_path %>
+  </div>
+<%- end %>
 
-<ul>
+<ol>
   <%- @lists.each do |list| %>
     <li><%= link_to list.title, list_path(list) %></li>
     <%- if current_user == @user %>
@@ -10,4 +12,4 @@
       <div><%= link_to 'Delete list', list_path(list), method: :delete, data: { confirm: "Are you sure?" } %></div>
     <%- end %>
   <%- end %>
-</ul>
+</ol>

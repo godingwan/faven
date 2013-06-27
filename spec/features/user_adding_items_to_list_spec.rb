@@ -28,7 +28,7 @@ So that I can change my list
     scenario 'item appears on show page after save' do
       visit list_path(list)
 
-      fill_in "List item", :with => "item 1"
+      fill_in "Add an item", :with => "item 1"
       click_button "Create List item"
 
       expect(page).to have_content("item 1")
@@ -37,7 +37,7 @@ So that I can change my list
     scenario 'manually clicking list title to go to the list' do
       click_link "Go to Lists"
       click_link list.title
-      fill_in "List item", :with => "item 1"
+      fill_in "Add an item", :with => "item 1"
       click_button "Create List item"
 
       expect(page).to have_content("item 1")
