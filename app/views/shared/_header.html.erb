@@ -1,0 +1,30 @@
+<div class="header_container">
+  <div class="header_wrapper">
+    <div class="logo_div">
+      <a href='/'><img src="http://placehold.it/50x50" alt="faven_log" class="logo" /></a>
+    </div>
+
+    <div class="nav_div">
+      <nav class="sign_in_out_container">
+        <ul>
+          <% if user_signed_in? %>
+            <li class="my_lists_link"><%= link_to "My Lists", user_lists_path(current_user) %></li>
+            <li class="button sign_out_link"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+          <%- else %>
+            <li class="button"><%= link_to "Sign up", new_user_registration_path %></li>
+            <li class="button"><%= link_to "Sign in", user_session_path %></li>
+          <%- end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="notice_container">
+  <%- if notice %>
+    <p class="notice"><%= notice %></p>
+  <%- end %>
+  <%- if alert %>
+    <p class="alert"><%= alert %></p>
+  <%- end %>
+</div>

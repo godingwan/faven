@@ -1,0 +1,49 @@
+@import compass/css3
+
+.list_container
+  margin-bottom: 4em
+  color: blue
+
+.list_title
+  font-family: 'Kite One', sans-serif
+  margin: 0 auto 0.5em auto
+  width: 15em
+  font-size: 1.5em
+  clear: left
+  +scale(1)
+  +transition-duration(0.5s)
+  &:hover
+    +scale(2)
+    +transition-duration(0.5s)
+
+.edit_button
+  width: 4em
+  float: left
+  position: relative
+  left: 18em
+
+.delete_button
+  width: 4.8em
+  float: left
+  position: relative
+  left: 22em
+
+.add_list_button
+  width: 3.8em
+  font-size: 1.3em
+  margin: 0 auto
+  clear: left
+  margin-bottom: 1em
+
+.body_container a
+  text-decoration: none
+  font-size: 0.8125em
+
+.item_title
+  margin: 0 auto 0.5em auto
+  font-size: 1.3em
+  clear: left
+  font-family: 'Kite One', sans-serif
+
+.no_scale:hover
+  +scale(1)
