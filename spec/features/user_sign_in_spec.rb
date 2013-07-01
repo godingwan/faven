@@ -4,7 +4,7 @@ feature 'user sign in page' do
   let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'user is able to sign in' do
-    visit '/'
+    visit '/users/sign_in'
 
     fill_in "Email", :with => user.email
     fill_in "Password", :with => user.password
@@ -14,7 +14,7 @@ feature 'user sign in page' do
   end
 
   scenario 'user puts in an invalid account' do
-    visit '/'
+    visit '/users/sign_in'
 
     fill_in "Email", :with => "not_valid_email"
     fill_in "Password", :with => "short"

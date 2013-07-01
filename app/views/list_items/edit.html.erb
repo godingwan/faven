@@ -1,6 +1,8 @@
-<h1>Edit item</h1>
+<div class="body_container">
+  <h1 class="writing">Edit item</h1>
 
-<%= simple_form_for [@list, @item] do |f| %>
-  <%= f.input :title %>
-  <%= f.button :submit %>
-<% end %>
+  <%= simple_form_for [@list, @item] do |f| %>
+    <%= f.input :title %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

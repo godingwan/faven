@@ -1,6 +1,6 @@
 module AuthenticationHelper
   def sign_in_as(user)
-    visit '/'
+    visit '/users/sign_in'
 
     fill_in "Email", :with => user.email
     fill_in "Password", :with => user.password

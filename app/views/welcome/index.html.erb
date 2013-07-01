@@ -1,10 +1,20 @@
-<div>
-  <% unless user_signed_in? %>
-    <p class="Sign_in_notice">Sign In </p>
-    <%= render 'sign_in_form' %>
-  <% else %>
-    <div>
-      <%= link_to "Go to Lists", user_lists_path(current_user) %>
-    </div>
-  <% end %>
+<div class="body_container">
+  <h1 class="title faven">Faven</h1>
+  <div class="writing intro">
+    <p>Welcome to Faven!</p>
+    <p>Faven is from the words favorite &amp seven.</p>
+    <p>Faven keeps track of a list of your favorite things.</p>
+    <p>The unique part is that you are only allowed to have seven lists of seven items.</p>
+    <p>Why only seven you may be asking?</p>
+    <p>There are seven days in the week, seven colors in the rainbow, and seven wonders of the world.</p>
+    <p>In order to continue that tradition, I limited each list to contain only seven items.</p>
+  </div>
+
+  <div class="link_to_lists_container">
+    <%- if user_signed_in? %>
+      <div class="list_link_wrapper">
+        <a class="list_link"><%= link_to "Go to Lists", user_lists_path(current_user) %></a>
+      </div>
+    <%- end %>
+  </div>
 </div>
