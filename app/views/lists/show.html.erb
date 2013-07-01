@@ -1,17 +1,23 @@
-<h4><%= @list.title %></h4>
+<div class="body_container">
+  <h1 class="writing"><%= @list.title %></h1>
 
-<ol>
-<%- @list.list_items.each do |item| %>
-  <li><%= item.title %></li>
-  <%- if current_user == @list.user %>
-    <div><%= link_to "Edit item", edit_list_list_item_path(item.list_id, item) %></div>
-    <div><%= link_to 'Delete item', list_list_item_path(@list, item), method: :delete, data: { confirm: "Are you sure?" } %></div>
-  <%- end %>
-<%- end %>
-</ol>
+  <div class="list_item_container">
+    <ol>
+    <%- @list.list_items.each do |item| %>
+      <div class="list_container">
+        <div class="item_title"><li><%= item.title %></li></div>
+        <%- if current_user == @list.user %>
+          <div class="button edit_button"><%= link_to "Edit item", edit_list_list_item_path(item.list_id, item) %></div>
+          <div class="button delete_button"><%= link_to 'Delete item', list_list_item_path(@list, item), method: :delete, data: { confirm: "Are you sure?" } %></div>
+        <%- end %>
+      </div>
+    <%- end %>
+    </ol>
 
-<%- if @list.list_items.count < 7 %>
-  <%- if current_user == @list_owner %>
-    <%= render 'list_item_creation' %>
-  <%- end %>
-<%- end %>
+    <%- if @list.list_items.count < 7 %>
+      <%- if current_user == @list_owner %>
+        <%= render 'list_item_creation' %>
+      <%- end %>
+    <%- end %>
+  </div>
+</div>

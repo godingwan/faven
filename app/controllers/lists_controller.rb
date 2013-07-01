@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
     @user = User.find(params[:user_id])
