@@ -2,6 +2,7 @@ class ListItemsController < ApplicationController
   def create
     @list = List.find(params[:list_id])
     @item = ListItem.new(params[:list_item])
+    # @item = current_user.list_items.new
     @item.list = @list
 
     if @item.save
@@ -29,8 +30,10 @@ class ListItemsController < ApplicationController
   end
 
   def destroy
-    @list = List.find(params[:list_id])
-    @item = ListItem.find(params[:id])
+    # @list = List.find(params[:list_id])
+    @list = current_user.lists.find(params[:list_id])
+    # @item = ListItem.find(params[:id])
+    @item = current_user.list_items.find(params[:id])
     @item.destroy
 
     redirect_to list_path(@list), notice: "Item deleted successfully."
