@@ -11,6 +11,7 @@ feature 'user creating an account' do
   scenario 'must provide all info to create an account' do
     visit '/users/sign_up'
 
+    fill_in "Username", :with => "username"
     fill_in "Email", :with => 'blah@email.com'
     fill_in "Password", :with => "abc123456"
     fill_in "Password confirmation", :with => "abc123456"
@@ -19,11 +20,12 @@ feature 'user creating an account' do
     expect(page).to have_content("signed up successfully.")
   end
 
-  scenario 'must provide all info to create an account' do
+  scenario 'receive error message if info is not filled out' do
     visit '/users/sign_up'
 
     click_button "Sign up"
 
+    expect(page).to have_content("Username can't be blank")
     expect(page).to have_content("Email can't be blank")
     expect(page).to have_content("Password can't be blank")
   end

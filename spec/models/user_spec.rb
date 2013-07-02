@@ -1,37 +1,35 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) do
-    @previous_count = User.count
+  let!(:user) do
     @user = User.new
   end
 
   it 'account is not created unless all info is presented' do
-    user
+    expect(@user.save).to eql(false)
+  end
 
-    @user.save
+  it 'account is not created if username is not provided' do
+    @user.email = "email@mail.com"
+    @user.password = "abc123456"
 
-    expect(User.count).to eql(@previous_count)
+    expect(@user.save).to eql(false)
   end
 
   it 'account is not created if email is not valid' do
-    user
-
+    @user.username = "username"
     @user.email = 'notvalidemail'
     @user.password = 'abc123456'
-    @user.save
 
-    expect(User.count).to eql(@previous_count)
+    expect(@user.save).to eql(false)
   end
 
   it 'account is not created if password is not long enough' do
-    user
-
+    @user.username = "username"
     @user.email = "email@mail.com"
     @user.password = "short"
-    @user.save
 
-    expect(User.count).to eql(@previous_count)
+    expect(@user.save).to eql(false)
   end
 
   it { should have_many(:lists) }
