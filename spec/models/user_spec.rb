@@ -33,4 +33,5 @@ describe User do
   end
 
   it { should have_many(:lists) }
+  it { should validate_uniqueness_of :username }
 end

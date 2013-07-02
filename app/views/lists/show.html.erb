@@ -19,5 +19,9 @@
         <%= render 'list_item_creation' %>
       <%- end %>
     <%- end %>
+
+    <%- if current_user == @list.user %>
+      <%= render 'publish_button' %>
+    <%- end %>
   </div>
 </div>

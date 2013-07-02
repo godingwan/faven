@@ -3,7 +3,7 @@ class ListsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @lists = @user.lists
+    @lists = @user.lists.viewable_by(current_user)
   end
 
   def new
