@@ -31,4 +31,28 @@ describe List do
 
     expect(over_limit_list.save).to eq(false)
   end
+
+  describe 'viewable_by' do
+    let(:user) { FactoryGirl.create(:user) }
+
+    it 'returns published lists' do
+      list = FactoryGirl.create(:list, state: 'published')
+
+      List.viewable_by(user).should include(list)
+    end
+
+    it 'excludes drafted lists' do
+      list = FactoryGirl.create(:list, state: 'drafted')
+
+      List.viewable_by(user).should_not include(list)
+    end
+
+    it 'returns all lists of the owner' do
+      published_list = FactoryGirl.create(:list, state: 'published', user: user)
+      drafted_list = FactoryGirl.create(:list, state: 'drafted', user: user)
+
+      List.viewable_by(user).should include(published_list)
+      List.viewable_by(user).should include(drafted_list)
+    end
+  end
 end
