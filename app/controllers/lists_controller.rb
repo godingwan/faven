@@ -11,9 +11,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    # @list = List.new(params[:list])
     @list = current_user.lists.new(params[:list])
-    # @list.user = current_user
 
     if @list.save
       flash[:notice] = "List created successfully."
@@ -40,13 +38,11 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    # @item = ListItem.new
     @item = current_user.list_items.new
     @list_owner = @list.user
   end
 
   def destroy
-    # @list = List.find(params[:id])
     @list = current_user.lists.find(params[:id])
 
     @list.destroy
