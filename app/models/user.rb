@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   validates_presence_of :username
+  validates_uniqueness_of :username
 
   has_many :lists
   has_many :list_items, through: :lists
