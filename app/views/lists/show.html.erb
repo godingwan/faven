@@ -15,7 +15,7 @@
     </ol>
 
     <%- if @list.list_items.count < 7 %>
-      <%- if current_user == @list_owner %>
+      <%- if current_user == @list.user %>
         <%= render 'list_item_creation' %>
       <%- end %>
     <%- end %>
