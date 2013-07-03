@@ -18,8 +18,8 @@ class List < ActiveRecord::Base
   validates_presence_of :user, :title
   validate :cannot_be_over_7, on: :create
 
-  belongs_to :user
-  has_many :list_items
+  belongs_to :user, :inverse_of => :lists
+  has_many :list_items, :inverse_of => :list, dependent: :destroy
 
   def cannot_be_over_7
     unless user.nil? or user.lists.count < 7
@@ -28,6 +28,10 @@ class List < ActiveRecord::Base
   end
 
   def self.viewable_by(user)
-    where("state = ? OR user_id = ?", 'published', user.id)
+    if user.nil?
+      where("state = ?", 'published')
+    else
+      where("state = ? OR user_id = ?", 'published', user.id)
+    end
   end
 end

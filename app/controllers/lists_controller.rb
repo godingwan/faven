@@ -38,8 +38,9 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @item = current_user.list_items.new
-    @list_owner = @list.user
+    if current_user == @list.user
+      @item = current_user.list_items.new
+    end
   end
 
   def destroy
