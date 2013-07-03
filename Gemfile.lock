@@ -70,6 +70,7 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    friendly_id (4.0.9)
     fssm (0.2.10)
     haml (4.0.2)
       tilt
@@ -177,6 +178,7 @@ DEPENDENCIES
   compass-rails
   devise
   factory_girl_rails
+  friendly_id
   haml
   jquery-rails
   launchy

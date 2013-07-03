@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
 
+  extend FriendlyId
+  friendly_id :username
+
   has_many :lists, :inverse_of => :user, dependent: :destroy
   has_many :list_items, through: :lists
 

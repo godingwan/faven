@@ -38,7 +38,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'simple_form'
 gem 'state_machine'
-
+gem 'friendly_id'
 
 gem 'jquery-rails'
 
