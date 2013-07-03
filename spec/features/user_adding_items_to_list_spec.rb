@@ -48,7 +48,7 @@ So that I can change my list
 
       click_button "Create List item"
 
-      expect(page).to have_content("Cannot have more than seven items.")
+      expect(page).to have_content("Failed to create item.")
     end
   end
 

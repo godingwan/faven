@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
 
   has_many :lists
+  has_many :list_items, through: :lists
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
