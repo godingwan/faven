@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
 
-  has_many :lists
+  has_many :lists, :inverse_of => :user, dependent: :destroy
   has_many :list_items, through: :lists
 
   def self.find_first_by_auth_conditions(warden_conditions)

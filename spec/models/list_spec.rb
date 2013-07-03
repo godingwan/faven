@@ -54,5 +54,13 @@ describe List do
       List.viewable_by(user).should include(published_list)
       List.viewable_by(user).should include(drafted_list)
     end
+
+    it 'allows nil user to view published lists' do
+      published_list = FactoryGirl.create(:list, state: 'published')
+      drafted_list = FactoryGirl.create(:list, state: 'drafted')
+
+      List.viewable_by(nil).should include(published_list)
+      List.viewable_by(nil).should_not include(drafted_list)
+    end
   end
 end

@@ -32,6 +32,12 @@ describe User do
     expect(@user.save).to eql(false)
   end
 
-  it { should have_many(:lists) }
-  it { should validate_uniqueness_of :username }
+  it 'account is not created if username is not unique' do
+    user_1 = FactoryGirl.create(:user)
+    user_2 = FactoryGirl.build(:user, username: user_1.username)
+
+    expect(user_2.save).to eql(false)
+  end
+
+  it { should have_many(:lists).dependent(:destroy) }
 end
