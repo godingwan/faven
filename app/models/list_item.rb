@@ -11,4 +11,11 @@ class ListItem < ActiveRecord::Base
       errors.add(:title, "You can only have seven items.")
     end
   end
+
+  def wiki_safe(title)
+    # This gets rid of all unsafe link characters
+    edited_title = title.tr("^A-Za-z0-9 ", '')
+    # Then combines the words with an underscore
+    final_title = edited_title.split.map{|s| s.capitalize}.join("_")
+  end
 end
