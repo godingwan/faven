@@ -1,8 +1,7 @@
 <div class="body_container">
   <h1 class="writing"><%= @list.title %></h1>
 
-  <div class="list_item_container">
-    <ol>
+  <ol>
     <%- @list.list_items.each do |item| %>
       <div class="list_container">
         <div class="item_title"><li><%= item.title %></li></div>
@@ -13,16 +12,15 @@
         <%- end %>
       </div>
     <%- end %>
-    </ol>
+  </ol>
 
-    <%- if @list.list_items.count < 7 %>
-      <%- if current_user == @list.user %>
-        <%= render 'list_item_creation' %>
-      <%- end %>
-    <%- end %>
-
+  <%- if @list.list_items.count < 7 %>
     <%- if current_user == @list.user %>
-      <%= render 'publish_button' %>
+      <%= render 'list_item_creation' %>
     <%- end %>
-  </div>
+  <%- end %>
+
+  <%- if current_user == @list.user %>
+    <%= render 'publish_button' %>
+  <%- end %>
 </div>
