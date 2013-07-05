@@ -37,7 +37,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = List.viewable_by(current_user).find(params[:id])
     if current_user == @list.user
       @item = current_user.list_items.new
     end
