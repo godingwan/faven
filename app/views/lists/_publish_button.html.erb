@@ -1,9 +1,13 @@
 <%= simple_form_for @list do |f| %>
-      <%- unless @list.published? %>
-        <%= f.hidden_field :state_event, value: "publish" %>
-        <%= f.button :submit, "Publish" %>
-      <%- else %>
-        <%= f.hidden_field :state_event, value: "unpublish" %>
-        <%= f.button :submit, "Unpublish" %>
-      <%- end %>
-    <%- end %>
+  <%- unless @list.published? %>
+    <div class="publish_button">
+      <%= f.hidden_field :state_event, value: "publish" %>
+      <%= f.button :submit, "Publish" %>
+    </div>
+  <%- else %>
+    <div class="unpublish_button">
+      <%= f.hidden_field :state_event, value: "unpublish" %>
+      <%= f.button :submit, "Unpublish" %>
+    </div>
+  <%- end %>
+<%- end %>
