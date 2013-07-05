@@ -38,6 +38,9 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    if @list.state == 'drafted' and current_user != @list.user
+      redirect_to root_path, alert: "That list is not public"
+    end
     if current_user == @list.user
       @item = current_user.list_items.new
     end
