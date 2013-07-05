@@ -34,4 +34,18 @@ describe ListItem do
 
     expect(over_limit_item.save).to eq(false)
   end
+
+  describe "wiki_safe" do
+    it 'must replace space character with an underscore' do
+      item = FactoryGirl.create(:list_item, title: "test string")
+
+      expect(item.wiki_url).to eq("http://www.en.wikipedia.org/wiki/Test_String")
+    end
+
+    it 'must get rid of commas' do
+      item = FactoryGirl.create(:list_item, title: "Seoul, South Korea")
+
+      expect(item.wiki_url).to eq("http://www.en.wikipedia.org/wiki/Seoul_South_Korea")
+    end
+  end
 end
