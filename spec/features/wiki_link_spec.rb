@@ -16,7 +16,7 @@ feature 'user visiting wiki page' do
   end
 
   context 'user not signed in' do
-    scenario 'link must be to wikipedia page' do
+    scenario 'list is published' do
       list = FactoryGirl.create(:list)
       item = FactoryGirl.create(:list_item, list: list)
       wiki_url = item.wiki_url
