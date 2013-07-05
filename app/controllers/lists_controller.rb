@@ -30,7 +30,7 @@ class ListsController < ApplicationController
     @list = current_user.lists.find(params[:id])
 
     if @list.update_attributes(params[:list])
-      redirect_to user_lists_path(current_user), notice: "List title changed."
+      redirect_to user_lists_path(current_user), notice: "List successfully changed."
     else
       redirect_to user_lists_path(current_user), alert: "Failed to change list title."
     end

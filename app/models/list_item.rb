@@ -12,7 +12,12 @@ class ListItem < ActiveRecord::Base
     end
   end
 
-  def wiki_safe(title)
+  def wiki_url
+    "http://www.en.wikipedia.org/wiki/#{wiki_safe_title}"
+  end
+
+  private
+  def wiki_safe_title
     # This gets rid of all unsafe link characters
     edited_title = title.tr("^A-Za-z0-9 ", '')
     # Then combines the words with an underscore

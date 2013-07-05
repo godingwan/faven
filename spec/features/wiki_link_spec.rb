@@ -1,16 +1,29 @@
 require 'spec_helper'
 
 feature 'user visiting wiki page' do
-  scenario 'clicking link must bring me to wiki page' do
-    user = FactoryGirl.create(:user)
-    list = FactoryGirl.create(:list, user: user)
-    item = FactoryGirl.create(:list_item, list: list)
+  context 'user signed in' do
+    scenario 'link must be to wikipedia page' do
+      user = FactoryGirl.create(:user)
+      list = FactoryGirl.create(:list, user: user)
+      item = FactoryGirl.create(:list_item, list: list)
+      wiki_url = item.wiki_url
 
-    sign_in_as(user)
+      sign_in_as(user)
+      visit list_path(list)
 
-    visit list_path(list)
-    click_link "Wiki"
+      expect(page.has_link?("Wiki", href: wiki_url)).to eq(true)
+    end
+  end
 
-    expect(page).to have_content("Wikipedia")
+  context 'user not signed in' do
+    scenario 'link must be to wikipedia page' do
+      list = FactoryGirl.create(:list)
+      item = FactoryGirl.create(:list_item, list: list)
+      wiki_url = item.wiki_url
+
+      visit list_path(list)
+
+      expect(page.has_link?("Wiki", href: wiki_url)).to eq(true)
+    end
   end
 end
