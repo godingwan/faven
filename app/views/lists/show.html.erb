@@ -1,5 +1,9 @@
 <div class="body_container">
   <h1 class="writing"><%= @list.title %></h1>
+  <div class="description_container">
+    <p>Description:</p>
+    <p><%= @list.description %></p>
+  </div>
 
   <ol>
     <%- @list.list_items.each do |item| %>
@@ -14,10 +18,25 @@
     <%- end %>
   </ol>
 
+  <%- if current_user == @list.user %>
+    <div class="spacing_for_list">
+      <p>Note: Other users do not see anything below this.</p>
+      <p>Must click publish button for other users to view this list</p>
+    </div>
+  <%- end %>
+
   <%- if @list.list_items.count < 7 %>
     <%- if current_user == @list.user %>
       <%= render 'list_item_creation' %>
     <%- end %>
+  <%- end %>
+
+  <%- if current_user == @list.user %>
+    <div class="spacing_for_list">
+      <div class="description_div">
+        <%= render 'description_field' %>
+      </div>
+    </div>
   <%- end %>
 
   <%- if current_user == @list.user %>

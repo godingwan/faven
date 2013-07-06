@@ -1,5 +1,5 @@
 class List < ActiveRecord::Base
-  attr_accessible :title, :state_event
+  attr_accessible :title, :state_event, :description
 
   state_machine :state, :initial => :drafted do
 
