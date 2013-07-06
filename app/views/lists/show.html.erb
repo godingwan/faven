@@ -8,7 +8,7 @@
         <div class="button wiki"><%= link_to "Wiki", item.wiki_url, target: "_blank" %></div>
         <%- if current_user == @list.user %>
           <div class="button edit_button"><%= link_to "Edit item", edit_list_list_item_path(item.list_id, item) %></div>
-          <div class="button delete_button"><%= link_to 'Delete item', list_list_item_path(@list, item), method: :delete, data: { confirm: "Are you sure?" } %></div>
+          <div class="button delete_button"><%= link_to 'Delete item', list_list_item_path(@list, item), method: :delete, data: { confirm: "Delete \"#{item.title}\"?" } %></div>
         <%- end %>
       </div>
     <%- end %>
