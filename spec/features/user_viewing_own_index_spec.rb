@@ -8,8 +8,6 @@ feature 'user on own index page' do
     let!(:other_user_list) { FactoryGirl.create(:list, user: other_user) }
     before(:each) do
       sign_in_as(active_user)
-
-      click_link "Go to Lists"
     end
 
     scenario 'should only see own list' do

@@ -35,7 +35,6 @@ So that I can change my list
     end
 
     scenario 'manually clicking list title to go to the list' do
-      click_link "Go to Lists"
       click_link list.title
       fill_in "Add an item", :with => "item 1"
       click_button "Create List item"
