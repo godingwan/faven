@@ -11,8 +11,8 @@
             <li class="my_lists_link"><%= link_to "My Lists", user_lists_path(current_user) %></li>
             <li class="button sign_out_link"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
           <%- else %>
-            <li class="button"><%= link_to "Sign up", new_user_registration_path %></li>
-            <li class="button"><%= link_to "Sign in", user_session_path %></li>
+            <li class="button"><%= link_to "Register", new_user_registration_path %></li>
+            <li class="button"><%= link_to "Login", user_session_path %></li>
           <%- end %>
         </ul>
       </nav>
