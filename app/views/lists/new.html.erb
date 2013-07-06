@@ -2,4 +2,6 @@
   <h1 class="writing">Add a list</h1>
 
   <%= render 'form_new' %>
+
+  <div class="button add_list_cancel"><%= link_to "Cancel", user_lists_path(current_user) %></div>
 </div>
