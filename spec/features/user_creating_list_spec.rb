@@ -6,7 +6,6 @@ feature 'user creating list' do
     before(:each) do
       sign_in_as(user)
 
-      click_link "Go to Lists"
       click_link "Add a list"
     end
 
