@@ -7,8 +7,9 @@
     <div class="nav_div">
       <nav class="sign_in_out_container">
         <ul>
+          <li class="public_lists_link"><%= link_to "Public Lists", lists_path %></li>
           <% if user_signed_in? %>
-            <li class="my_lists_link"><%= link_to "My Lists", user_lists_path(current_user) %></li>
+            <li class="button"><%= link_to "My lists", user_lists_path(current_user) %></li>
             <li class="button sign_out_link"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
           <%- else %>
             <li class="button"><%= link_to "Register", new_user_registration_path %></li>

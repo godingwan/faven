@@ -1,9 +1,11 @@
 <div class="body_container">
   <h1 class="writing"><%= @list.title %></h1>
-  <div class="description_container">
-    <p>Description:</p>
-    <p><%= @list.description %></p>
-  </div>
+  <%- if @list.description %>
+    <div class="description_container">
+      <p>Description:</p>
+      <p><%= @list.description %></p>
+    </div>
+  <%- end %>
 
   <ol>
     <%- @list.list_items.each do |item| %>

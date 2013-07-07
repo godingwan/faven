@@ -2,8 +2,12 @@ class ListsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @user = User.find(params[:user_id])
-    @lists = @user.lists.viewable_by(current_user)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @lists = @user.lists.viewable_by(current_user)
+    else
+      @lists = List.viewable_by(nil)
+    end
   end
 
   def new
