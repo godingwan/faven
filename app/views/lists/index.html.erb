@@ -5,19 +5,23 @@
     <%- @lists.each do |list| %>
       <div class="list_container">
         <div class="list_title"><li><%= link_to list.title, list_path(list) %></li></div>
-        <%- if current_user == @user %>
-          <div class="button edit_button"><%= link_to "Edit list", edit_list_path(list) %></div>
-          <div class="button delete_button"><%= link_to 'Delete list', list_path(list), method: :delete, data: { confirm: "Delete \"#{list.title}\"?" } %></div>
+        <%- unless current_user.nil? %>
+          <%- if current_user == @user %>
+            <div class="button edit_button"><%= link_to "Edit list", edit_list_path(list) %></div>
+            <div class="button delete_button"><%= link_to 'Delete list', list_path(list), method: :delete, data: { confirm: "Delete \"#{list.title}\"?" } %></div>
+          <%- end %>
         <%- end %>
       </div>
     <%- end %>
   </ol>
 
-  <%- if current_user == @user %>
-    <%- if @user.lists.count < 7 %>
-      <div class="button add_list_button">
-        <%= link_to "Add a list", new_list_path %>
-      </div>
+  <%- unless current_user.nil? %>
+    <%- if current_user == @user %>
+      <%- if @user.lists.count < 7 %>
+        <div class="button add_list_button">
+          <%= link_to "Add a list", new_list_path %>
+        </div>
+      <%- end %>
     <%- end %>
   <%- end %>
 </div>
