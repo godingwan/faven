@@ -26,8 +26,8 @@ class ListItemsController < ApplicationController
   end
 
   def destroy
-    @list = current_user.lists.find(params[:list_id])
     @item = current_user.list_items.find(params[:id])
+    @list = @item.list
     @item.destroy
 
     redirect_to list_path(@list), notice: "Item deleted successfully."
