@@ -3,14 +3,14 @@
   <%- if @list.description %>
     <div class="description_container">
       <p>Description:</p>
-      <p><%= @list.description %></p>
+      <p><%= auto_link(@list.description) %></p>
     </div>
   <%- end %>
 
   <ol>
     <%- @list.list_items.each do |item| %>
       <div class="list_container">
-        <div class="item_title"><li><%= item.title %></li></div>
+        <div class="item_title"><li><%= link_to item.title, list_item_path(item) %></li></div>
         <div class="button wiki"><%= link_to "Wiki", item.wiki_url, target: "_blank" %></div>
         <%- if current_user == @list.user %>
           <div class="button edit_button"><%= link_to "Edit item", edit_list_item_path(item) %></div>
