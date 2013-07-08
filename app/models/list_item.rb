@@ -1,5 +1,5 @@
 class ListItem < ActiveRecord::Base
-  attr_accessible :title
+  attr_accessible :title, :description
 
   validates_presence_of :title, :list
   validate :cannot_be_over_7, on: :create

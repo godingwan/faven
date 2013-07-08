@@ -1,13 +1,15 @@
 BreakableToy2::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :skip => [:password]
 
   resources :users, only: [:show] do
     resources :lists, only: [:index]
   end
 
   resources :lists do
-    resources :list_items, only: [:create, :destroy, :edit, :update]
+    resources :list_items, only: [:create]
   end
+
+  resources :list_items, only: [:show, :edit, :destroy, :update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

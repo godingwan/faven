@@ -39,7 +39,7 @@ gem 'carrierwave'
 gem 'simple_form'
 gem 'state_machine'
 gem 'friendly_id'
-
+gem 'rails_autolink'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
