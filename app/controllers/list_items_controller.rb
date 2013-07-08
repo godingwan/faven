@@ -1,4 +1,8 @@
 class ListItemsController < ApplicationController
+  def show
+    @item = ListItem.find(params[:id])
+  end
+
   def create
     @list = List.find(params[:list_id])
     @item = ListItem.new(params[:list_item])
@@ -19,7 +23,7 @@ class ListItemsController < ApplicationController
   def update
     @item = current_user.list_items.find(params[:id])
     if @item.update_attributes(params[:list_item])
-      redirect_to list_path(@item.list_id), notice: "Item updated successfully."
+      redirect_to list_item_path(@item), notice: "Item updated successfully."
     else
       redirect_to list_path(@item.list_id), alert: "Failed to edit item."
     end

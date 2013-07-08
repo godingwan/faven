@@ -1,0 +1,21 @@
+<div class="body_container">
+  <h1 class="writing"><%= @item.title %></h1>
+
+  <%- if @item.description %>
+    <div class="description_container">
+      <p>Description &amp Extra Info:</p>
+      <p><%= auto_link(@item.description) %></p>
+    </div>
+  <%- end %>
+
+  <%- if current_user == @item.list.user %>
+    <div class="spacing_for_list">
+      <p>Note: Other users do not see anything below this.</p>
+    </div>
+  <%- end %>
+
+  <%= simple_form_for @item do |f| %>
+    <%= f.input :description %>
+    <%= f.button :submit, "Change info" %>
+  <%- end %>
+</div>
