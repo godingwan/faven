@@ -4,9 +4,10 @@ class ListsController < ApplicationController
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @lists = @user.lists.viewable_by(current_user)
+      @lists = @user.lists.order("created_at ASC").viewable_by(current_user)
     else
-      @lists = List.viewable_by(nil)
+      @search = List.order('created_at DESC').viewable_by(nil).search(params[:q])
+      @lists = @search.result
     end
   end
 
