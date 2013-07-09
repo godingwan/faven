@@ -1,6 +1,16 @@
 <div class="body_container">
   <h1 class="writing">List title</h1>
 
+  <%- unless params[:user_id] %>
+    <%= search_form_for @search do |f| %>
+      <div class="field">
+        <%= f.label :title_cont, "Title contains" %>
+        <%= f.text_field :title_cont %>
+      </div>
+      <div class="actions"><%= f.submit "Search" %></div>
+    <%- end %>
+  <%- end %>
+
   <ol>
     <%- @lists.each do |list| %>
       <div class="list_container">
