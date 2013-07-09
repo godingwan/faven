@@ -12,10 +12,10 @@
     <div class="spacing_for_list">
       <p>Note: Other users do not see anything below this.</p>
     </div>
-  <%- end %>
 
-  <%= simple_form_for @item do |f| %>
-    <%= f.input :description %>
-    <%= f.button :submit, "Change info" %>
+    <%= simple_form_for @item do |f| %>
+      <%= f.input :description %>
+      <%= f.button :submit, "Change info" %>
+    <%- end %>
   <%- end %>
 </div>
