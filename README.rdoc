@@ -1,3 +1,36 @@
+Using Faven:
+- To view all public lists, click on "Public list" located on the header. You do not need to be signed in to view public lists
+
+- To create a list, you must first be signed in. After signing in, you will be directed to your personal list page. Click on "Add a list" to add a list's title.
+  Hint: Lists are unpublished when initially created.
+
+- To add an item to the list, either click on the list title itself or the associated "To List" button. This will bring you to the specific list page. From here, you will see a field called "Add an item". In that textbox, you type in the name of the item that you would like to add. A wiki link will automatically be created for you (The implementation is still slightly buggy).
+
+- To add details to a list, fill in the "Description" field on the lists page.
+
+- To add details to an item, click on the item's title. From here you will see a "Description" field to add more details, such as links or why this item is your favorite.
+
+- To share your published lists, you can give out your url which has the format "http://faven.herokuapp.com/users/(username here)/lists". Remember to make your lists public so that other people can see it.
+
+===================================================================
+
 Faven is a combination of "favorite" and "seven". This will serve as an online favorites list storage. The twist is that a user can only have a total of seven lists of seven items.
 
-Why seven you may be asking? Seven is prominent in many aspects. There are seven continent and seas, seven notes in a musical scale, and seven days in a week. Seven is also prominent in religion and seven is the only two syllable word among the first ten.
+I created Faven because I got tired of asking friends for suggestions on movies and games. Also, it was hard to keep track of what friends enjoyed which sports. So, I created Faven to be able to keep track of who likes what.
+
+===================================================================
+
+Gems used...
+1) compass-rails - for their ease in applying website specific styling in one code.
+
+2) devise - for their ease in creating a username and validating that a user is signed in.
+
+3) simple_form - for the time it saves in creating forms and for displaying custom errors.
+
+4) state_machine - helped in assigning a list to be in a published and unpublished state.
+
+5) friendly_id - to change the url from a number to using the associated username
+
+6) rails_autolink - to create links for when a link is provided in the description.
+
+7) ransack - for their eas in searching through all the lists by their title.

@@ -7,7 +7,7 @@ class ListsController < ApplicationController
       @lists = @user.lists.order("created_at ASC").viewable_by(current_user)
     else
       @search = List.order('created_at DESC').viewable_by(nil).search(params[:q])
-      @lists = @search.result
+      @lists = @search.result.page(params[:page]).per(7)
     end
   end
 
