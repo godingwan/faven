@@ -35,7 +35,6 @@ end
 gem 'haml'
 gem 'compass-rails'
 gem 'devise'
-gem 'carrierwave'
 gem 'simple_form'
 gem 'state_machine'
 gem 'friendly_id'
