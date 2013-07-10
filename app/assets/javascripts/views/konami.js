@@ -6,7 +6,7 @@ $(document).ready(function(){
     function(e){
       keys.push( e.keyCode );
       if ( keys.toString().indexOf( konami ) >= 0 ){
-        $('#canvas_div').show();
+        $('#canvas_div').show(2000);
         keys = [];
       }
     })
