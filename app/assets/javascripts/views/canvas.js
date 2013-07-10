@@ -44,6 +44,10 @@ c.addEventListener('mousemove', onmousemove, false);
 
 setupCanvas();
 
+document.getElementById('clear').addEventListener('click', function() {
+  setupCanvas();
+}, false);
+
 // jquery version
 $('#canvas_div').hide();
 
