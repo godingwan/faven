@@ -35,13 +35,13 @@ end
 gem 'haml'
 gem 'compass-rails'
 gem 'devise'
-gem 'carrierwave'
 gem 'simple_form'
 gem 'state_machine'
 gem 'friendly_id'
 gem 'rails_autolink'
 gem 'jquery-rails'
 gem 'ransack'
+gem 'kaminari'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
