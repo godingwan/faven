@@ -5,6 +5,7 @@ class ListItem < ActiveRecord::Base
   validate :cannot_be_over_7, on: :create
 
   belongs_to :list, :inverse_of => :list_items
+  has_many :comments
 
   def cannot_be_over_7
     unless list.nil? or list.list_items.count < 7
