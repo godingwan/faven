@@ -1,6 +1,8 @@
 class ListItemsController < ApplicationController
   def show
     @item = ListItem.find(params[:id])
+    @comment = @item.comments.new
+    @comments = @item.comments
   end
 
   def create

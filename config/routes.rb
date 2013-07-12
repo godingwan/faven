@@ -9,7 +9,9 @@ BreakableToy2::Application.routes.draw do
     resources :list_items, only: [:create]
   end
 
-  resources :list_items, only: [:show, :edit, :destroy, :update]
+  resources :list_items, only: [:show, :edit, :destroy, :update] do
+    resources :comments, only: [:create]
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
