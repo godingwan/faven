@@ -8,6 +8,18 @@
     </div>
   <%- end %>
 
+  <p>Comments</p>
+  <%- @comments.each do |comment| %>
+    <%= comment.body %>
+  <%- end %>
+
+  <%- unless current_user.nil? %>
+    <%= simple_form_for [@item, @comment] do |f| %>
+      <%= f.input :body, label: "Comment" %>
+      <%= f.button :submit %>
+    <%- end %>
+  <%- end %>
+
   <%- if current_user == @item.list.user %>
     <div class="spacing_for_list">
       <p>Note: Other users do not see anything below this.</p>
