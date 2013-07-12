@@ -34,6 +34,9 @@
           <%= link_to "Add a list", new_list_path %>
         </div>
       <%- end %>
+
+      <p>To share this link, give this URL...</p>
+      <%= "http://faven.herokuapp.com/users/#{@user.username}/lists" %>
     <%- end %>
   <%- end %>
 </div>
