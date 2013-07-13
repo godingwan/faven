@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   has_many :lists, :inverse_of => :user, dependent: :destroy
   has_many :list_items, through: :lists
+  has_many :comments, :inverse_of => :user, dependent: :destroy
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
