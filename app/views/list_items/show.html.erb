@@ -8,18 +8,20 @@
     </div>
   <%- end %>
 
-  <p>Comments</p>
-  <%# I have to pop the last one out because %>
-  <%# the controller was making a new comment entry %>
-  <%# that was interfering with the blank? method %>
-  <%- @comments.pop %>
-  <%- unless @comments.blank? %>
-    <%- @comments.each do |comment| %>
-      <%= comment.user.username + ":" %>
-      <%= comment.body %>
-      <br/>
+  <div class="comments">
+    <p class="writing">Comments</p>
+    <%# I have to pop the last one out because %>
+    <%# the controller was making a new comment entry %>
+    <%# that was interfering with the blank? method %>
+    <%- @comments.pop %>
+    <%- unless @comments.blank? %>
+      <%- @comments.each do |comment| %>
+        <%= comment.user.username + ":" %>
+        <%= comment.body %>
+        <br/>
+      <%- end %>
     <%- end %>
-  <%- end %>
+  </div>
 
   <%- unless current_user.nil? %>
     <%= simple_form_for [@item, @comment] do |f| %>
