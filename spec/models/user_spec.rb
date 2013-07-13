@@ -40,4 +40,5 @@ describe User do
   end
 
   it { should have_many(:lists).dependent(:destroy) }
+  it { should have_many(:comments).dependent(:destroy) }
 end
