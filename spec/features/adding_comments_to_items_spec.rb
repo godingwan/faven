@@ -17,6 +17,7 @@ feature 'item contains comment option', %q{
       click_button "Create Comment"
 
       expect(page).to have_content("Owner comment")
+      expect(page).to have_content(list.user.username)
     end
   end
 
