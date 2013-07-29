@@ -10,4 +10,12 @@ class CommentsController < ActionController::Base
       redirect_to list_item_path(@item), alert: "Did not create comment"
     end
   end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @item = @comment.list_item
+
+    @comment.destroy
+    redirect_to list_item_path(@item), notice: "Comment successfully deleted."
+  end
 end

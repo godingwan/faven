@@ -16,8 +16,12 @@
     <%- @comments.pop %>
     <%- unless @comments.blank? %>
       <%- @comments.each do |comment| %>
-        <%= comment.user.username + ":" %>
+        <%= comment.user.username + ": " %>
         <%= comment.body %>
+
+        <%- if current_user == comment.user %>
+          <%= link_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Delete comment?" } %>
+        <%- end %>
         <br/>
       <%- end %>
     <%- end %>
